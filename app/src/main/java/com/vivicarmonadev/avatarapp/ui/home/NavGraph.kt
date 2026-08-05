@@ -3,12 +3,16 @@ package com.vivicarmonadev.avatarapp.ui.home
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
+import androidx.navigation.NavType
+import androidx.navigation.navArgument
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.vivicarmonadev.avatarapp.ui.home.HomeScreen
 import com.vivicarmonadev.avatarapp.ui.perfil.PerfilScreen
 import com.vivicarmonadev.avatarapp.ui.configuracion.ConfiguracionScreen
 import com.vivicarmonadev.avatarapp.ui.avatares.AvataresScreen
+import com.vivicarmonadev.avatarapp.ui.avatares.DetalleAvatarScreen
+
 
 // Definimos las rutas como constantes, para no escribir strings sueltos por todos lados
 object Rutas {
@@ -16,6 +20,7 @@ object Rutas {
     const val PERFIL = "perfil"
     const val CONFIGURACION = "configuracion"
     const val AVATARES = "avatares"
+    const val DETALLE_AVATAR = "detalle_avatar/{archivoGlb}"
 }
 
 @Composable
@@ -42,9 +47,15 @@ fun AvatarAppNavGraph() {
         composable(Rutas.AVATARES) {
             AvataresScreen(
                 onAvatarSeleccionado = { avatar ->
-
+                    navController.navigate("detalle_avatar/${avatar.archivoGlb}")
                 }
             )
+        }
+        composable(
+            route = Rutas.DETALLE_AVATAR,
+            arguments = listOf(navArgument("archivoGlb") { type = NavType.StringType })
+        ) {
+            DetalleAvatarScreen()
         }
     }
 }
