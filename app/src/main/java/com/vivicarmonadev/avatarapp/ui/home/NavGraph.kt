@@ -8,7 +8,7 @@ import androidx.navigation.compose.rememberNavController
 import com.vivicarmonadev.avatarapp.ui.home.HomeScreen
 import com.vivicarmonadev.avatarapp.ui.perfil.PerfilScreen
 import com.vivicarmonadev.avatarapp.ui.configuracion.ConfiguracionScreen
-import com.vivicarmonadev.avatarapp.ui.avatares.AvatarScreen
+import com.vivicarmonadev.avatarapp.ui.avatares.AvataresScreen
 
 // Definimos las rutas como constantes, para no escribir strings sueltos por todos lados
 object Rutas {
@@ -40,7 +40,11 @@ fun AvatarAppNavGraph() {
             ConfiguracionScreen()
         }
         composable(Rutas.AVATARES) {
-            AvatarScreen()
+            AvataresScreen(
+                onAvatarSeleccionado = { avatar ->
+
+                }
+            )
         }
     }
 }
