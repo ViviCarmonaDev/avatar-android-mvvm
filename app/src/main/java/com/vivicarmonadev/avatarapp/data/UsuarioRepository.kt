@@ -27,4 +27,15 @@ class UsuarioRepository(private val dao: UsuarioDao) {
             )
         )
     }
+
+    suspend fun guardarTema(temaOscuro: Boolean) {
+        if (dao.existeUsuario() == 0) {
+            // Si todavia no hay fila, creamos una con valores por defecto + el tema elegido
+            dao.guardarUsuario(
+                UsuarioEntity(id = 0, nombre = "Usuario", avatarFavoritoId = "1", temaOscuro = temaOscuro)
+            )
+        } else {
+            dao.actualizarTema(temaOscuro)
+        }
+    }
 }

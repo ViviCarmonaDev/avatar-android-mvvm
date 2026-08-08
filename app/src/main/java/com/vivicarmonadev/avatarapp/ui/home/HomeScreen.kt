@@ -1,45 +1,40 @@
 package com.vivicarmonadev.avatarapp.ui.home
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.material3.Button
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Search
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
-fun HomeScreen(
-    onIrAPerfil: () -> Unit,
-    onIrAConfiguracion: () -> Unit,
-    onIrAAvatares: () -> Unit,
-    viewModel: HomeViewModel = viewModel()
-) {
-    // Se "suscribe" al StateFlow: cada vez que cambia, esto se redibuja solo
+fun HomeScreen(viewModel: HomeViewModel = viewModel()) {
     val avatarFavorito by viewModel.avatarFavorito.collectAsState()
 
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(24.dp),
-        verticalArrangement = Arrangement.spacedBy(16.dp)
-    ) {
-        Text(text = "Hola 👋")
+    Column(modifier = Modifier.fillMaxSize().padding(24.dp)) {
 
-        Text(text = "Avatar favorito: ${avatarFavorito?.nombre ?: "Ninguno"}")
+        // --- Bloque saludo ---
+        // Titulo grande con el nombre + subtitulo chico gris
+        Text(text = "Hola 👋", style = MaterialTheme.typography.headlineMedium)
+        Text(
+            text = "Tu avatar favorito: ${avatarFavorito?.nombre ?: "Ninguno"}",
+            style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
 
-        Button(onClick = onIrAAvatares) {
-            Text("Ver lista de avatares")
-        }
+        Spacer(modifier = Modifier.height(20.dp))
 
-        Button(onClick = onIrAPerfil) {
-            Text("Ver mi perfil")
-        }
-
-        Button(onClick = onIrAConfiguracion) {
-            Text("Configuración")
-        }
+        // --- Bloque buscador (visual)
+        OutlinedTextField(
+            value = "",
+            onValueChange = { },
+            placeholder = { Text("Buscar avatar...") },
+            leadingIcon = { Icon(Icons.Filled.Search, contentDescription = null) },
+            shape = RoundedCornerShape(16.dp),
+            modifier = Modifier.fillMaxWidth()
+        )
     }
 }

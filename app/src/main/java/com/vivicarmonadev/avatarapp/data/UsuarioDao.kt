@@ -13,4 +13,10 @@ interface UsuarioDao {
 
     @Upsert
     suspend fun guardarUsuario(usuario: UsuarioEntity)
+
+    @Query("UPDATE usuario SET temaOscuro = :activado WHERE id = 0")
+    suspend fun actualizarTema(activado: Boolean)
+
+    @Query("SELECT COUNT(*) FROM usuario WHERE id = 0")
+    suspend fun existeUsuario(): Int
 }
