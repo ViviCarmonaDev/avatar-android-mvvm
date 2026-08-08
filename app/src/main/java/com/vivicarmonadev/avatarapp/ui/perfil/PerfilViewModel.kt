@@ -3,16 +3,24 @@ package com.vivicarmonadev.avatarapp.ui.perfil
 import androidx.lifecycle.ViewModel
 import com.vivicarmonadev.avatarapp.data.Avatar
 import com.vivicarmonadev.avatarapp.data.Usuario
-import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import androidx.lifecycle.viewModelScope
+import com.vivicarmonadev.avatarapp.data.UsuarioRepository
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.launch
 
-class PerfilViewModel : ViewModel(){
-    private val _usuario = MutableStateFlow(
-        Usuario(nombre = "Tony", avatarFavoritoId = "1")
-    )
-    val usuario: StateFlow<Usuario> = _usuario
+class PerfilViewModel(
+    private val repository: UsuarioRepository
+) : ViewModel() {
 
-    // Mock de avatares disponibles, en el futuro esto vendra de un Repository compartido
+    val usuario: StateFlow<Usuario> = repository.observarUsuario()
+        .stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5000),
+            initialValue = Usuario(nombre = "Usuario", avatarFavoritoId = "1")
+        )
+
     private val avataresDisponibles = listOf(
         Avatar(id = "1", nombre = "Robotito", archivoGlb = "robotito.glb"),
         Avatar(id = "2", nombre = "Zorrito", archivoGlb = "zorrito.glb"),
@@ -20,9 +28,15 @@ class PerfilViewModel : ViewModel(){
     )
 
     val avatarFavorito: Avatar?
-        get() = avataresDisponibles.find { it.id == _usuario.value.avatarFavoritoId }
+        get() = avataresDisponibles.find { it.id == usuario.value.avatarFavoritoId }
 
     fun cambiarNombre(nuevoNombre: String) {
-        _usuario.value = _usuario.value.copy(nombre = nuevoNombre)
+        viewModelScope.launch {
+            repository.guardarNombre(
+                nombre = nuevoNombre,
+                avatarFavoritoId = usuario.value.avatarFavoritoId,
+                temaOscuro = false
+            )
+        }
     }
 }
