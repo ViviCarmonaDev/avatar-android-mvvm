@@ -59,7 +59,7 @@ com.vivicarmonadev.avatarapp
 | SceneView (Filament) | Renderizado de modelos 3D (glTF/GLB) |
 | Blender | Modelado, rigging y animación de los avatares |
 
-## 🎨 Pipeline de los avatares (Blender → Android)
+## 🎨 Los avatares (Blender → Android)
 
 1. Modelado con primitivas simples en Blender
 2. Rigging (esqueleto/Armature) con Automatic Weights
