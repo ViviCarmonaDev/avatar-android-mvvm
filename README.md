@@ -2,17 +2,18 @@
 
 App Android nativa con avatares 3D animados, creados en Blender y renderizados con SceneView (Filament).
 
-## Documentación completa
-👉 [Ver en GitBook](enlace-pendiente)
+📖 Documentación técnica completa (arquitectura, decisiones de diseño, flujo de auth):
+
+[![Documentación en GitBook](https://img.shields.io/badge/Docs-GitBook-3884FF?style=for-the-badge&logo=gitbook&logoColor=white)](https://v-c-myproyects.gitbook.io/android-login-mvvm-firebase/)
 
 ## ✨ Características
 
-- 🏠 **Home** con saludo personalizado y buscador
-- 🎭 **Lista de avatares** en formato grid, con 3 avatares propios (Robotito, Zorrito, Astronauta)
-- 🎬 **Visor 3D animado**: cada avatar tiene su propia animación (saludo, salto, giro de cabeza)
-- 👤 **Perfil editable**, con persistencia real (Room)
-- ⚙️ **Configuración** con tema claro/oscuro funcional
-- 🧭 Navegación con barra inferior (BottomNavBar)
+-  **Home** con saludo personalizado y buscador
+-  **Lista de avatares** en formato grid, con 3 avatares propios (Robotito, Zorrito, Astronauta)
+-  **Visor 3D animado**: cada avatar tiene su propia animación (saludo, salto, giro de cabeza)
+-  **Perfil editable**, con persistencia real (Room)
+-  **Configuración** con tema claro/oscuro funcional
+-  Navegación con barra inferior (BottomNavBar)
 
 ## 🏗️ Arquitectura
 
