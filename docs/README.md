@@ -1,4 +1,4 @@
-# AvatarApp 
+# Introducción
 
 Bienvenido a la documentación técnica de **Avatar App**, una aplicación Android nativa que permite crear, visualizar y animar avatares 3D personalizados.
 

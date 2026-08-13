@@ -4,7 +4,7 @@ La app sigue el patrón **Model-View-ViewModel (MVVM)**, la arquitectura recomen
 
 ## Estructura de carpetas
 
-![Estructura de carpetas MVVM](images/estructura-carpetas.svg)
+![Estructura de carpetas MVVM](imagenes/estructura_carpetas_mvvm.png)
 
 ## Las 3 capas
 
@@ -30,6 +30,6 @@ El proyecto no usa Hilt/Koin — se implementó un contenedor manual simple:
 
 ## Flujo de datos (ejemplo: Perfil)
 
-![Flujo de datos del Perfil](images/flujo-datos-perfil.svg)
+![Flujo de datos del Perfil](imagenes/flujo_datos_perfil.png)
 
 Cualquier cambio en la base de datos se refleja automáticamente en la UI, sin necesidad de "refrescar" manualmente.
