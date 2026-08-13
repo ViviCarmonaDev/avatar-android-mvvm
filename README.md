@@ -1,10 +1,10 @@
-# avatar-android-mvv
+# Avatar-android-mvv
 
 App Android nativa con avatares 3D animados, creados en Blender y renderizados con SceneView (Filament).
 
 📖 Documentación técnica completa (arquitectura, decisiones de diseño, flujo de auth):
 
-[![Documentación en GitBook](https://img.shields.io/badge/Docs-GitBook-3884FF?style=for-the-badge&logo=gitbook&logoColor=white)](https://v-c-myproyects.gitbook.io/android-login-mvvm-firebase/)
+[![Documentación en GitBook](https://img.shields.io/badge/Docs-GitBook-3884FF?style=for-the-badge&logo=gitbook&logoColor=white)](https://v-c-myproyects.gitbook.io/avatar_android_mvvm/) 
 
 ## ✨ Características
 
